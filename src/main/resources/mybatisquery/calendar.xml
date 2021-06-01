@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="com.brownpoodle.calendar.dao.CalendarDAO">
+
+	<select id="calendarSelectAll"   resultType="calendarVO">
+			SELECT 													
+						A.CAL_NO				CAL_NO				
+						,A.CAL_TITLE			CAL_TITLE			
+						,A.CAL_STARTDATE		CAL_STARTDATE		
+						,A.CAL_ENDDATE			CAL_ENDDATE			
+						,A.CAL_DESCRIPTION		CAL_DESCRIPTION		
+						,A.CAL_TYPE				CAL_TYPE			
+						,A.CAL_BACKGROUNDCOLOR	CAL_BACKGROUNDCOLOR	
+						,A.CAL_TEXTCOLOR		CAL_TEXTCOLOR		
+						,A.CAL_ALLDAY			CAL_ALLDAY			
+						,A.CAL_INSERTDATE		CAL_INSERTDATE		
+						,A.CAL_UPDATEDATE		CAL_UPDATEDATE		
+						,A.CAL_DELETEYN			CAL_DELETEYN		
+						,A.M_ID					M_ID				
+			FROM 													
+						CALENDAR A
+			WHERE CAL_DELETEYN = 'Y' 									
+		 	ORDER BY 1 DESC
+	</select>
+	
+	<insert id="calendarInsert" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+		 INSERT INTO CALENDAR 								
+ 					( 								
+							CAL_NO						
+							,CAL_TITLE					
+							,CAL_STARTDATE				
+							,CAL_ENDDATE				
+							,CAL_DESCRIPTION			
+							,CAL_TYPE					
+							,CAL_BACKGROUNDCOLOR		
+							,CAL_TEXTCOLOR				
+							,CAL_ALLDAY					
+							,CAL_INSERTDATE				
+							,CAL_UPDATEDATE				
+							,CAL_DELETEYN				
+							,M_ID						
+ 					) 								
+ 			VALUES	 								
+ 					( 								
+							#{cal_no, jdbcType=VARCHAR}							
+							,#{cal_title, jdbcType=VARCHAR}							
+							,#{cal_startdate, jdbcType=VARCHAR}							
+							,#{cal_enddate, jdbcType=VARCHAR}							
+							,#{cal_description, jdbcType=VARCHAR}							
+							,#{cal_type, jdbcType=VARCHAR}							
+							,#{cal_backgroundcolor, jdbcType=VARCHAR}							
+							,#{cal_textcolor, jdbcType=VARCHAR}							
+							,#{cal_allday, jdbcType=VARCHAR}							
+							,SYSDATE					
+							,SYSDATE					
+							,'Y'						
+							,#{m_id, jdbcType=VARCHAR}							
+ 					) 	
+	</insert>
+	
+	<update id="calendarUpdate" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+		    UPDATE CALENDAR
+  			SET 
+	                CAL_TITLE = #{cal_title, jdbcType=VARCHAR}
+	                ,CAL_STARTDATE  = #{cal_startdate, jdbcType=VARCHAR}
+	                ,CAL_ENDDATE = #{cal_enddate, jdbcType=VARCHAR}
+	                ,CAL_DESCRIPTION = #{cal_description, jdbcType=VARCHAR}
+					,CAL_TYPE	= #{cal_type, jdbcType=VARCHAR}
+					,CAL_BACKGROUNDCOLOR =#{cal_backgroundColor, jdbcType=VARCHAR}
+					,CAL_TEXTCOLOR = #{cal_textColor, jdbcType=VARCHAR}
+					,CAL_ALLDAY = #{cal_allDay, jdbcType=VARCHAR}
+					,CAL_UPDATEDATE= SYSDATE
+  			WHERE CAL_NO = #{cal_no, jdbcType=VARCHAR}
+  			AND M_ID = 'ksks'
+    		AND CAL_DELETEYN = 'Y
+	</update>
+	
+	<update id="calendarDelete" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+		    UPDATE CALENDAR
+    		SET 
+            	 CAL_DELETEYN='N'
+  			WHERE CAL_NO = #{cal_no, jdbcType=VARCHAR}
+  			AND M_ID = 'ksks'
+    		AND CAL_DELETEYN = 'Y'
+	</update>
+</mapper>	

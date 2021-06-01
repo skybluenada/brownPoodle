@@ -11,5 +11,9 @@
 	
 	<br>
 	<a href="/gofiletest.bp">file upload 테스트 페이지로 이동</a>
+	
+	<br>
+	<a href="/calendarSelectAll.bp">캘린더 페이지로 이동</a>
+	
 </body>
 </html>
