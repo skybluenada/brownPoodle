@@ -2,37 +2,34 @@ package com.brownpoodle.board.vo;
 
 public class BoardVO {
 	
-	private String b_num;
-	private String b_subject;
-	private String b_name;
-	private String b_content;
-	private String b_file;
-	private String b_hate;
-	private String b_like;
-	private String b_deleteyn;
-	private String b_insertdate;
-	private String b_updatedate;
+	// ★★VO에서 정의한 모든 요소들은 SQL문에 같은 이름의 컬럼으로 사용해줘야 
+	//     view페이지에 값을 불러올 수 있다.★★
+	private String b_num;			// 게시글 번호
+	private String b_subject;		// 게시글 제목
+	private String b_name;			// 게시글 작성자
+	private String b_content;		// 게시글 본문
+	private String b_file;			// 게시글 사진
+	private String b_hate;			// 누적 신고 수 
+	private String b_like;			// 좋아요 수 
+	private String b_deleteyn;		// 게시글 삭제여부
+	private String b_insertdate;	// 게시글 작성일자
+	private String b_updatedate;	// 게시글 수정일자 
 	
-	// 페이징 처리 변수
-	private String pagesize;	// 한 페이지당 보여줄 게시글 수
-	private String groupsize;	// 한 그룹당 표시할 페이지 수
-	private String curpage;		// 현재 페이지
-	private String totalcount;	// 전체 게시글 수
-	
-	// 검색 구분자 및 검색어
-	private String keyfilter;
-	private String keyword;
-	private String startdate;
-	private String enddate;
-	
-	// constructor 
-	public BoardVO() {	}
+	// 좋아요 관련 변수 추가 
+	private String like_num;		// 좋아요 번호 : L0001
+	private String m_num;			// 회원번호
+	private String like_deleteyn;   // 좋아요 취소 여부
 
-	public BoardVO(String b_num, String b_subject, String b_name, String b_content, 
-					String b_file, String b_hate, String b_like, String b_deleteyn,
-					String b_insertdate, String b_updatedate, String pagesize,
-					String groupsize, String curpage, String totalcount, String keyfilter,
-					String keyword, String startdate, String enddate) {
+	// 생성자 
+	public BoardVO() {
+		
+	}
+
+	public BoardVO(String b_num, String b_subject, 
+			       String b_name, String b_content, 
+			       String b_file, String b_hate,
+			       String b_like, String b_deleteyn, 
+			       String b_insertdate, String b_updatedate) {
 		this.b_num = b_num;
 		this.b_subject = b_subject;
 		this.b_name = b_name;
@@ -43,17 +40,32 @@ public class BoardVO {
 		this.b_deleteyn = b_deleteyn;
 		this.b_insertdate = b_insertdate;
 		this.b_updatedate = b_updatedate;
-		this.pagesize = pagesize;
-		this.groupsize = groupsize;
-		this.curpage = curpage;
-		this.totalcount = totalcount;
-		this.keyfilter = keyfilter;
-		this.keyword = keyword;
-		this.startdate = startdate;
-		this.enddate = enddate;
+	}
+	
+	// 좋아요 변수 추가한 생성자 
+	public BoardVO(String b_num, String b_subject, 
+				   String b_name, String b_content, 
+				   String b_file, String b_hate,
+			       String b_like, String b_deleteyn, 
+			       String b_insertdate, String b_updatedate, 
+			       String like_num, String m_num,
+			       String like_deleteyn) {
+		this.b_num = b_num;
+		this.b_subject = b_subject;
+		this.b_name = b_name;
+		this.b_content = b_content;
+		this.b_file = b_file;
+		this.b_hate = b_hate;
+		this.b_like = b_like;
+		this.b_deleteyn = b_deleteyn;
+		this.b_insertdate = b_insertdate;
+		this.b_updatedate = b_updatedate;
+		this.like_num = like_num;
+		this.m_num = m_num;
+		this.like_deleteyn = like_deleteyn;
 	}
 
-	// getter and setter
+	// getter, setter
 	public String getB_num() {
 		return b_num;
 	}
@@ -92,38 +104,6 @@ public class BoardVO {
 
 	public String getB_updatedate() {
 		return b_updatedate;
-	}
-
-	public String getPagesize() {
-		return pagesize;
-	}
-
-	public String getGroupsize() {
-		return groupsize;
-	}
-
-	public String getCurpage() {
-		return curpage;
-	}
-
-	public String getTotalcount() {
-		return totalcount;
-	}
-
-	public String getKeyfilter() {
-		return keyfilter;
-	}
-
-	public String getKeyword() {
-		return keyword;
-	}
-
-	public String getStartdate() {
-		return startdate;
-	}
-
-	public String getEnddate() {
-		return enddate;
 	}
 
 	public void setB_num(String b_num) {
@@ -166,36 +146,29 @@ public class BoardVO {
 		this.b_updatedate = b_updatedate;
 	}
 
-	public void setPagesize(String pagesize) {
-		this.pagesize = pagesize;
+	// 좋아요 getter/setter
+	public String getLike_num() {
+		return like_num;
 	}
 
-	public void setGroupsize(String groupsize) {
-		this.groupsize = groupsize;
+	public String getM_num() {
+		return m_num;
 	}
 
-	public void setCurpage(String curpage) {
-		this.curpage = curpage;
+	public String getLike_deleteyn() {
+		return like_deleteyn;
 	}
 
-	public void setTotalcount(String totalcount) {
-		this.totalcount = totalcount;
+	public void setLike_num(String like_num) {
+		this.like_num = like_num;
 	}
 
-	public void setKeyfilter(String keyfilter) {
-		this.keyfilter = keyfilter;
+	public void setM_num(String m_num) {
+		this.m_num = m_num;
 	}
 
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-
-	public void setStartdate(String startdate) {
-		this.startdate = startdate;
-	}
-
-	public void setEnddate(String enddate) {
-		this.enddate = enddate;
+	public void setLike_deleteyn(String like_deleteyn) {
+		this.like_deleteyn = like_deleteyn;
 	}
 
 }

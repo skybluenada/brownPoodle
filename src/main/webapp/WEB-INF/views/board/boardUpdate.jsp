@@ -8,5 +8,10 @@
 </head>
 <body>
 
+<script>
+	alert("글 수정이 완료되었습니다.");
+	location.href="/boardInsertForm.bp";
+</script>
+
 </body>
 </html>

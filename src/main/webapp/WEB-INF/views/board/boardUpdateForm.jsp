@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<h2>게시글 수정하기 페이지</h2>
 </body>
 </html>

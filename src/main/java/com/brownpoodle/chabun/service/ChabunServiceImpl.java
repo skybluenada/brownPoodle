@@ -27,10 +27,16 @@ public class ChabunServiceImpl implements ChabunService {
 		return chabunDAO.getBoardChabun();
 	}
 
-//	@Override
-//	public RboardVO getRboardChabun() {
-//		// TODO Auto-generated method stub
-//		return chabunDAO.getRboardChabun();
-//	}
+	@Override
+	public RboardVO getRboardChabun() {
+		// TODO Auto-generated method stub
+		return chabunDAO.getRboardChabun();
+	}
+
+	@Override
+	public BoardVO getLikeChabun() {
+		// TODO Auto-generated method stub
+		return chabunDAO.getLikeChabun();
+	}
 
 }

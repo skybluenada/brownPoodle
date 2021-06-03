@@ -8,74 +8,102 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.brownpoodle.board.vo.BoardVO;
-import com.brownpoodle.member.vo.MemberVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO {
-
 	private Logger logger = Logger.getLogger(BoardDAOImpl.class);
 	
+	// 의존성 주입
 	@Autowired(required = false)
-	private SqlSessionTemplate sqlSessionTemplate;
+	private SqlSessionTemplate sqlSession;
 	
-	// 게시글 상세 조회 
+	// ●게시판 상세보기
 	@Override
 	public List<BoardVO> boardSelect(BoardVO bvo) {
-		logger.info("BoardDAOImpl -> boardSelect 진입!");
-		return sqlSessionTemplate.selectList("boardSelect", bvo);
-	}
-
-	// 게시글 전체 조회 + 검색 + paging
-	@Override
-	public List<BoardVO> boardSelectAll(BoardVO bvo) {
-		System.out.println("BoardDAOImpl 진입!");
-		logger.info("BoardDAOImpl boardSelectAll >>> : ");
-		//logger.debug("message >>> : " + sqlSessionTemplate.selectList("boardSelectAll", bvo));
-		
-		return sqlSessionTemplate.selectList("boardSelectAll", bvo);
-	}
-
-	@Override
-	public int boardInsert(BoardVO bvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int boardUpdate(BoardVO bvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int boardDelete(BoardVO bvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	// 좋아요 수 출력 
-	@Override
-	public BoardVO boardSelectLike(BoardVO bvo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	// ●게시판 전체보기
 	@Override
-	public int boardUpdateLike(BoardVO bvo) {
+	public List<BoardVO> boardSelectAll(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
+	// ●게시판 글쓰기
 	@Override
-	public int likeInsert(BoardVO bvo, MemberVO mvo) {
+	public int boardInsert(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		logger.info("BoardDAOImpl boardInsert 함수 진입 >>> : ");	
+		return (Integer)sqlSession.insert("boardInsert", bvo);
 	}
 
+	// ●게시판 글수정
 	@Override
-	public int likeUpdate(BoardVO bvo, MemberVO mvo) {
+	public int boardUpdate(BoardVO bvo) {
 		// TODO Auto-generated method stub
-		return 0;
+		logger.info("BoardDAOImpl boardUpdate 함수 진입 >>> :");
+		return (Integer)sqlSession.update("boardUpdate", bvo);
 	}
+
+	// ●게시판 글삭제 
+	@Override
+	public int boardDelete(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardDelete 함수 진입 >>> :");
+		return (Integer)sqlSession.update("boardDelete", bvo);
+	}
+
+	//===========================좋아요============================
+	// 좋아요 수 출력 : selectAll과 합치기
+	@Override
+	public List<BoardVO> boardLikeSelect(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikeSelect 함수 진입 >>> :");
+		return sqlSession.selectList("boardLikeSelect", bvo);
+	}
+
+	// 사용자가 해당 게시글에 좋아요를 눌렀는지 확인
+	@Override
+	public List<BoardVO> boardLikeCheck(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikeCheck 함수 진입 >>> :");
+		return sqlSession.selectList("boardLikeCheck", bvo);
+	}
+
+	// 처음으로 좋아요 눌렀을 때, 좋아요 테이블 인서트
+	@Override
+	public int boardLikeInsert(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikeInsert 함수 진입 >>> : ");	
+		return (Integer)sqlSession.insert("boardLikeInsert", bvo);
+	}
+
+	// BOARD 테이블의 B_LIKE +1 업데이트
+	@Override
+	public int boardLikePlus(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikePlus 함수 진입 >>> :");
+		return (Integer)sqlSession.update("boardLikePlus", bvo);
+	}
+
+	// 취소했다가 다시 좋아요 눌렀을 때, 좋아요 테이블 업데이트
+	// 좋아요 취소하면, 좋아요 테이블 업데이트
+	@Override
+	public int boardLikeUpdate(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikeUpdate 함수 진입 >>> :");
+		return (Integer)sqlSession.update("boardLikeUpdate", bvo);
+	}
+
+	// BOARD 테이블의 B_LIKE -1업데이트
+	@Override
+	public int boardLikeMinus(BoardVO bvo) {
+		// TODO Auto-generated method stub
+		logger.info("BoardDAOImpl boardLikeMinus 함수 진입 >>> :");
+		return (Integer)sqlSession.update("boardLikeMinus", bvo);
+	}
+	//===========================좋아요============================
 
 }
