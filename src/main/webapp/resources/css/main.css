@@ -1,0 +1,119 @@
+.logot{
+	background-color: #FFFFFF;
+	border-collapse: collapse
+}
+
+
+.logotr{
+	border-collapse: collapse;
+}
+
+
+.logotdh{
+	padding-left: 75px;
+	padding-right: 8px;
+}
+
+.logotd{
+	height: 80px;
+}
+
+.logotdtext{
+	padding-right: 380px;
+}
+
+.logotdicon1{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.logotdicon2{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.logotdicon3{
+	padding-left: 100px;
+	padding-right: 100px;
+}
+
+.logotdlogin{
+	padding-left: 370px;
+	padding-right: 10px;
+}
+
+.logotdloginp{
+	padding-right: 80px;
+}
+.leftside{
+	padding-left: 75px;
+
+}
+
+.board{
+
+	margin-top: 65px;
+	margin-left: 352px;
+	margin-right: 352px;
+	width: 680px;
+	background-color: #FFFFFF;
+	border-collapse: collapse;
+}
+
+.boardtd{
+	border-collapse: collapse;
+	border-spacing:0;
+	
+
+}
+.boardtdphoto{
+	border-collapse: collapse;
+	border-spacing:0;
+	padding: 0px;
+	
+
+
+}
+
+.boardtdlike{
+	width: 10px;
+	border-collapse: collapse;
+	border-spacing:0;
+	padding-left: 17px;
+}
+
+.boardprofil{
+	padding-left: 17px;
+	padding-top: 14px;
+	padding-bottom: 11px;
+}
+.boardtdlikere{
+	width:60px;
+}
+
+.boardtdphoto{
+	
+}
+.rightside{
+	border: 1px solid black;
+}
+
+.leftside{
+	padding-top: 30px;
+}
+.leftsidetd{
+	padding-top: 25px;
+	padding-bottom: 25px;
+	width: 20px;
+}
+.leftsidetext{
+	padding-left: 32px;
+}
+
+
+
+
+body {
+	background-color: #EEEEEE;
+	margin:0 auto; 
+	}

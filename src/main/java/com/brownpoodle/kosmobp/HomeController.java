@@ -124,10 +124,8 @@ public class HomeController {
 		FileUploadUtil fu = new FileUploadUtil();
 		
 		// boolean result = fu.uploadFile(request, "boardimg");
-		System.out.println(result);
-		if (result) {
-			model.addAttribute("message", "file upload complete!");
-		}
+	
+	
 //		System.out.println("file name: "+ request.getFileNames());
 //		String basepath = request.getSession().getServletContext().getRealPath("resources/img/");
 //
