@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="resources/css/main.css" type="text/css">
 </head>
 <body>
-
+<a href="hello.bp">aaa</a>
+<br><br>
 <!-- 상단 -->
 <table class="logot">
 	<tr class="logotr">
