@@ -8,5 +8,8 @@
 		<!-- 
 		<typeAlias type="com.brownpoodle.board.vo.RboardVO" alias="rboardVO"/>	
 		 -->
+		<typeAlias type="com.brownpoodle.member.vo.MemberVO" alias="memberVO"/>	
+		<typeAlias type="com.brownpoodle.login.vo.ID_AuthNumVO" alias="id_AuthNumVO"/>	
+		<typeAlias type="com.brownpoodle.login.vo.PW_AuthNumVO" alias="pw_AuthNumVO"/>			 
 	</typeAliases>
 </configuration>

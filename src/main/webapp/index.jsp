@@ -9,6 +9,8 @@
 </head>
 <body>
 <a href="hello.bp">aaa</a>
+<a href="login.bp">login</a>
+
 <br><br>
 <!-- 상단 -->
 <table class="logot">
