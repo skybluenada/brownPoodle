@@ -1,1 +1,2 @@
 git 연습용입니다.
+git branch board 만들고 연습 21.06.04
