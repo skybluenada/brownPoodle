@@ -330,7 +330,7 @@ public class LoginController {
 		requestHeaders.put("Authorization", header);
 		String responseBody = get(apiURL, requestHeaders);
 		logger.info("responseBody >>> : " + responseBody);
-		// responseBody >>> : {"resultcode":"00","message":"success","response":{"id":"Xer9j9zMGXHeqGU8xpI5Nw3DalPE7K4hBQ1rvyd33NU","nickname":"\ud638","profile_image":"https:\/\/ssl.pstatic.net\/static\/pwe\/address\/img_profile.png","age":"20-29","gender":"M","email":"xcv232@naver.com","mobile":"010-4601-8919","mobile_e164":"+821046018919","name":"\uae40\uaddc\ubbfc","birthday":"07-26","birthyear":"1996"}}
+		
         //위에 값을 콘솔로 찍어본다. name 값이 유니코드인데 브라우저에서 자동으로 변환해서 읽고 json simple 라이브러리가 변환해준다.
 		
         JSONObject jobj = new JSONObject();
