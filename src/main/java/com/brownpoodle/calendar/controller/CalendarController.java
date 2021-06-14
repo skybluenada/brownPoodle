@@ -80,6 +80,8 @@ public class CalendarController {
 		//wvo.setM_id(m_id);
 		wvo.setM_id("brownPoodle");
 		
+		String m_nick = (String)session.getAttribute("m_nick");
+		
 		// 산책 정보 받아왔습니다.
 		List<WalkVO> asList = calendarService.walkSelectAll(wvo);
 		logger.info("asList >>> : " + asList);
@@ -88,8 +90,9 @@ public class CalendarController {
 			WalkVO wvo_1 = asList.get(i);
 			JSONObject jobj = new JSONObject();
 			jobj.put("_id", wvo_1.getWalk_seq());
+			// jobj.put("title", m_nick + "님이 산책한 날");
 			jobj.put("title", "산책");
-			jobj.put("description", "금일은 " + wvo_1.getWalk_time() +"이나 산책하셨습니다.");
+			jobj.put("description", "금일은 " + wvo_1.getWalk_time() +"이나 산책하셨습니다");
 			jobj.put("start", wvo_1.getWalk_date());
 			jobj.put("end", wvo_1.getWalk_date());
 			jobj.put("type", "카테고리1");
