@@ -46,12 +46,14 @@ public class LoginController {
 		this.loginService = loginService;
 	}
 
+	// 로그인 페이지 이동
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String loginPage() {
 		logger.info("LoginController loginPage() >>> : ");
 		return "login/login";
 	}
 
+	// 로그인 시도
 	@RequestMapping(value = "loginTry", method = RequestMethod.POST)
 	public ModelAndView loginTry(MemberVO mvo, HttpSession session) throws Exception {
 		logger.info("LoginController loginTry() >>> : ");
@@ -76,6 +78,7 @@ public class LoginController {
 		return mv;
 	}
 
+	// 로그아웃
 	@RequestMapping("logout")
 	public ModelAndView logout(HttpSession session) {
 		session.invalidate();
@@ -83,12 +86,14 @@ public class LoginController {
 		return mv;
 	}
 
+	// 아이디 찾기
 	@RequestMapping(value = "idFind", method = RequestMethod.GET)
 	public String idFind() {
 		logger.info("LoginController idFind() >>> : ");
 		return "login/idFind";
 	}
 
+	// 이름과 이메일이 일치하는지 여부를 확인하고 이메일 인증번호 보내줌.
 	@RequestMapping(value = "idAuthEmailCheck", method = RequestMethod.GET)
 	public ModelAndView idAuthEmailCheck(MemberVO mvo) {
 
@@ -303,6 +308,7 @@ public class LoginController {
 //		return "login/kakaologin";
 //	}
 
+//	-------- NAVER LOGIN -------------------------------------------------------------------
 	@RequestMapping(value = "/naverCallback")
 	public String callback() {
 		logger.info("LoginContorller callback 함수 진입 성공 >>> : ");
@@ -423,7 +429,7 @@ public class LoginController {
         return "login/loginSucc";
 	}
 	
-	// 카카오 로그인
+//	-------- KAKAO LOGIN -------------------------------------------------------------------
 	@RequestMapping(value="/kakaoCallback.bp")
 	public String kakaoCallback() {
 		logger.info("LoginController kakaoCallback 함수 진입 성공 >>> :");
@@ -546,10 +552,7 @@ public class LoginController {
 		return "login/loginSucc"; 
 	}
 	
-
-
-	
-
+//	-------- RestFul 방식의 데이터 받아오기 위한 메소드 -------------------------------------------------------------------
 	public static String get(String apiUrl, Map<String, String> requestHeaders) {
 		HttpURLConnection con = connect(apiUrl);
 		try {
