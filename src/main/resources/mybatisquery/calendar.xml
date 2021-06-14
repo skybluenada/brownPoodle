@@ -3,7 +3,8 @@
 				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 			
 <mapper namespace="com.brownpoodle.calendar.dao.CalendarDAO">
-
+	
+	<!-- 캘린더 조회 -->
 	<select id="calendarSelectAll"   resultType="calendarVO">
 			SELECT 													
 						A.CAL_NO				CAL_NO				
@@ -21,11 +22,18 @@
 						,A.M_ID					M_ID				
 			FROM 													
 						CALENDAR A
-			WHERE CAL_DELETEYN = 'Y' 									
+			WHERE A.CAL_DELETEYN = 'Y'
+			AND M_ID = #{m_id, jdbcType=VARCHAR}								
 		 	ORDER BY 1 DESC
 	</select>
 	
-	<insert id="calendarInsert" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+	<!-- 캘린더 입력 -->
+	<insert id="calendarInsert" parameterType="calendarVO">
+		<selectKey keyProperty="cal_no" resultType="String" order="BEFORE">
+			SELECT
+			'C' || LPAD(NVL(MAX(SUBSTR(CAL_NO,
+			-4)), 0) + 1, 4, '0') FROM CALENDAR
+		</selectKey>
 		 INSERT INTO CALENDAR 								
  					( 								
 							CAL_NO						
@@ -50,9 +58,9 @@
 							,#{cal_enddate, jdbcType=VARCHAR}							
 							,#{cal_description, jdbcType=VARCHAR}							
 							,#{cal_type, jdbcType=VARCHAR}							
-							,#{cal_backgroundcolor, jdbcType=VARCHAR}							
-							,#{cal_textcolor, jdbcType=VARCHAR}							
-							,#{cal_allday, jdbcType=VARCHAR}							
+							,#{cal_backgroundColor, jdbcType=VARCHAR}							
+							,#{cal_textColor, jdbcType=VARCHAR}							
+							,#{cal_allDay, jdbcType=VARCHAR}							
 							,SYSDATE					
 							,SYSDATE					
 							,'Y'						
@@ -60,7 +68,8 @@
  					) 	
 	</insert>
 	
-	<update id="calendarUpdate" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+	<!-- 캘린더 수정 -->
+	<update id="calendarUpdate" parameterType="calendarVO">
 		    UPDATE CALENDAR
   			SET 
 	                CAL_TITLE = #{cal_title, jdbcType=VARCHAR}
@@ -73,16 +82,39 @@
 					,CAL_ALLDAY = #{cal_allDay, jdbcType=VARCHAR}
 					,CAL_UPDATEDATE= SYSDATE
   			WHERE CAL_NO = #{cal_no, jdbcType=VARCHAR}
-  			AND M_ID = 'ksks'
-    		AND CAL_DELETEYN = 'Y
+  			AND M_ID = #{m_id, jdbcType=VARCHAR}
+    		AND CAL_DELETEYN = 'Y'
 	</update>
 	
-	<update id="calendarDelete" parameterType="com.brownpoodle.calendar.vo.calendarVO">
+	<!-- 캘린더 삭제 -->
+	<update id="calendarDelete" parameterType="calendarVO">
 		    UPDATE CALENDAR
     		SET 
             	 CAL_DELETEYN='N'
   			WHERE CAL_NO = #{cal_no, jdbcType=VARCHAR}
-  			AND M_ID = 'ksks'
+  			AND M_ID = #{m_id, jdbcType=VARCHAR}
+    		AND CAL_DELETEYN = 'Y'
+	</update>
+	
+	<!-- 산책정보 전체 조회 -->
+	<select id="walkSelectAll" resultType="walkVO">
+		SELECT 
+		    A.WALK_SEQ							WALK_SEQ
+		    ,TO_CHAR(A.WALK_DATE, 'YYYY-MM-DD')	WALK_DATE
+		    ,A.WALK_TIME						WALK_TIME
+		    ,A.M_ID								M_ID
+		FROM WALKRECORDED A
+		WHERE M_ID = #{m_id, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 캘린더 드래그앤드롭으로 수정 -->
+	<update id="calendarDragAndDrop" parameterType="calendarVO">
+		    UPDATE CALENDAR
+  			SET 
+	                CAL_STARTDATE  = #{cal_startdate, jdbcType=VARCHAR}
+	                ,CAL_ENDDATE = #{cal_enddate, jdbcType=VARCHAR}
+	        WHERE CAL_NO = #{cal_no, jdbcType=VARCHAR}
+  			AND M_ID = #{m_id, jdbcType=VARCHAR}
     		AND CAL_DELETEYN = 'Y'
 	</update>
 </mapper>	

@@ -7,18 +7,18 @@
 <head>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FullCalendar</title>
-    <link rel=" shortcut icon" href="image/favicon.ico">
+    <title>캘린더 : 갈색푸들</title>
+    <link rel=" shortcut icon" href="/resources/calendar/image/favicon.ico">
 
     <link rel="stylesheet" href="/resources/calendar/vendor/css/fullcalendar.min.css" />
     <link rel="stylesheet" href="/resources/calendar/vendor/css/bootstrap.min.css">
     <link rel="stylesheet" href='/resources/calendar/vendor/css/select2.min.css' />
-    <link rel="stylesheet" href='/resources/vendor/css/bootstrap-datetimepicker.min.css' />
+    <link rel="stylesheet" href='/resources/calendar/vendor/css/bootstrap-datetimepicker.min.css' />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,600">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="/resources/calendar/css/main.css">
 	
 </head>
 
@@ -43,7 +43,7 @@
             <div id="calendar"></div>
         </div>
 
-path >>> : out.println('${path}')
+
         <!-- 일정 추가 MODAL -->
         <div class="modal fade" tabindex="-1" role="dialog" id="eventModal">
             <div class="modal-dialog" role="document">
@@ -58,10 +58,10 @@ path >>> : out.println('${path}')
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-allDay">하루종일</label>
-                                <input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
+                                <label><input class='allDayNewEvent' id="edit-allDay" type="checkbox"></label>
                             </div>
                         </div>
-
+						
                         <div class="row">
                             <div class="col-xs-12">
                                 <label class="col-xs-4" for="edit-title">일정명</label>
@@ -134,6 +134,7 @@ path >>> : out.println('${path}')
             <div class="panel-heading">
                 <h3 class="panel-title">필터</h3>
             </div>
+            
 
             <div class="panel-body">
 
@@ -150,18 +151,11 @@ path >>> : out.println('${path}')
                 </div>
 
                 <div class="col-lg-6">
-                    <label for="calendar_view">등록자별</label>
+                    <label for="calendar_view">등록자</label>
                     <div class="input-group">
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="정연"
-                                checked>정연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="다현"
-                                checked>다현</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="사나"
-                                checked>사나</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="나연"
-                                checked>나연</label>
-                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="지효"
-                                checked>지효</label>
+                 
+                        <label class="checkbox-inline"><input class='filter' type="checkbox" value="brownPoodle"
+                                checked>brownPoodle</label>
                     </div>
                 </div>
 
@@ -170,13 +164,13 @@ path >>> : out.println('${path}')
         <!-- /.filter panel -->
     </div>
     <!-- /.container -->
-    <script src="/resources/calendar/js/jquery.min.js"></script>
-    <script src="/resources/calendar/js/bootstrap.min.js"></script>
-    <script src="/resources/calendar/js/moment.min.js"></script>
-    <script src="/resources/calendar/js/fullcalendar.min.js"></script>
-    <script src="/resources/calendar/js/ko.js"></script>
-    <script src="/resources/calendar/js/select2.min.js"></script>
-    <script src="/resources/calendar/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/resources/calendar/vendor/js/jquery.min.js"></script>
+    <script src="/resources/calendar/vendor/js/bootstrap.min.js"></script>
+    <script src="/resources/calendar/vendor/js/moment.min.js"></script>
+    <script src="/resources/calendar/vendor/js/fullcalendar.min.js"></script>
+    <script src="/resources/calendar/vendor/js/ko.js"></script>
+    <script src="/resources/calendar/vendor/js/select2.min.js"></script>
+    <script src="/resources/calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
     <script src="/resources/calendar/js/main.js"></script>
     <script src="/resources/calendar/js/addEvent.js"></script>
     <script src="/resources/calendar/js/editEvent.js"></script>
